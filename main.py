@@ -21,6 +21,8 @@ class Game:
                     TopFence(self, j, i)
                 if column == "B":
                     BottomFence(self, j, i)
+                if column == "S":
+                    BottomFenceTopper(self, j, i)
                 if column == "P":
                     Player(self, j, i)
 
