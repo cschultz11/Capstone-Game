@@ -41,6 +41,8 @@ class Game:
             if event.type == pygame.QUIT:
                 self.playing == False
                 self.running == False
+                pygame.quit()
+                exit()
 
     def update(self):
         self.all_sprites.update()
@@ -70,6 +72,3 @@ g.new()
 while g.running:
     g.main()
     g.game_over()
-    
-py.game.quit()
-sys.exit()
