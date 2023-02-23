@@ -28,7 +28,7 @@ class Player(pygame.sprite.Sprite):
         self.y_change = 0
         
         self.facing = 'down'
-        self.animation_loop = 1
+        #self.animation_loop = 1
         
         self.image = self.game.character_spritesheet.get_sprite(0, 0, self.width, self.height)
         
@@ -36,6 +36,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.x = self.x
         self.rect.y = self.y
         
+    #Updates player and animations
     def update(self):
         self.movement()
         self.animate()
@@ -48,6 +49,7 @@ class Player(pygame.sprite.Sprite):
         self.x_change = 0
         self.y_change = 0
         
+    #Sets movement as well as "camera"
     def movement(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
@@ -71,6 +73,7 @@ class Player(pygame.sprite.Sprite):
             self.y_change += PLAYER_SPEED
             self.facing = 'down'
     
+    #Defines collision with blocks and prevents camera from moving past the boundaries
     def collide_blocks(self, direction):
         if direction == "x":
             hits = pygame.sprite.spritecollide(self, self.game.blocks, False)
@@ -95,7 +98,8 @@ class Player(pygame.sprite.Sprite):
                     for sprite in self.game.all_sprites:
                         sprite.rect.y -= PLAYER_SPEED
                     self.rect.y = hits[0].rect.bottom
-                    
+
+    #TODO: Add more 3 more animations (frames) for each direction of movement, then update array vars               
     def animate(self):
         #down_animations = [self.game.character_spritesheet.get_sprite(0,0, self.width, self.height), self.game.character_spritesheet.get_sprite(0,0, self.width, self.height), self.game.character_spritesheet.get_sprite(0,0, self.width, self.height)]
         #up_animations = [self.game.character_spritesheet.get_sprite(32,0,self.width,self.height), self.game.character_spritesheet.get_sprite(32,0,self.width,self.height), self.game.character_spritesheet.get_sprite(32,0,self.width,self.height)]
